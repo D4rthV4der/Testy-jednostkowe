@@ -1,0 +1,35 @@
+using System;
+using Xunit;
+
+public class RównanieKwadratoweTests
+{
+    [Fact]
+    public void BrakPierwiastkowRzeczywistych()
+    {
+        var result = RównanieKwadratowe.ObliczPierwiastki(2, 1, 3);
+
+        Assert.Null(result.x1);
+        Assert.Null(result.x2);
+    }
+
+    [Fact]
+    public void JedenPierwiastekRzeczywisty()
+    {
+        var result = RównanieKwadratowe.ObliczPierwiastki(1, -6, 9);
+
+        Assert.NotNull(result.x1);
+        Assert.Null(result.x2);
+        Assert.Equal(3, Math.Round(result.x1.Value, 2));
+    }
+
+    [Fact]
+    public void DwaPierwiastkiRzeczywiste()
+    {
+        var result = RównanieKwadratowe.ObliczPierwiastki(1, -3, -4);
+
+        Assert.NotNull(result.x1);
+        Assert.NotNull(result.x2);
+        Assert.Equal(4, Math.Round(result.x1.Value, 2));
+        Assert.Equal(-1, Math.Round(result.x2.Value, 2));
+    }
+}
