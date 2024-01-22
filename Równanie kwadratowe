@@ -1,0 +1,28 @@
+using System;
+
+public class RównanieKwadratowe
+{
+    public static (double? x1, double? x2) ObliczPierwiastki(double a, double b, double c)
+    {
+        double delta = b * b - 4 * a * c;
+
+        if (delta < 0)
+        {
+            // Brak pierwiastków rzeczywistych
+            return (null, null);
+        }
+        else if (delta == 0)
+        {
+            // Jeden pierwiastek rzeczywisty
+            double x = -b / (2 * a);
+            return (x, null);
+        }
+        else
+        {
+            // Dwa pierwiastki rzeczywiste
+            double x1 = (-b + Math.Sqrt(delta)) / (2 * a);
+            double x2 = (-b - Math.Sqrt(delta)) / (2 * a);
+            return (x1, x2);
+        }
+    }
+}
